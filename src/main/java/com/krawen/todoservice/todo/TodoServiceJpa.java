@@ -1,8 +1,5 @@
 package com.krawen.todoservice.todo;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +17,8 @@ public class TodoServiceJpa implements ITodoService {
 		return todoRepo.findByUsername(username);
 	}
 	
-	public Todo addTodo(String username, String description, LocalDate targetDate, boolean done) {
-		Todo todo = new Todo(10,username,description,targetDate,done);
+	public Todo addTodo(String username, Todo todo) {
+		todo.setUsername(username);
 		todoRepo.save(todo);
 		return todo;
 	}

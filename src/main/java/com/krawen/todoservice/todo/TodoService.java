@@ -30,8 +30,9 @@ public class TodoService implements ITodoService {
 		return todos.stream().filter(predicate).toList();
 	}
 	
-	public Todo addTodo(String username, String description, LocalDate targetDate, boolean done) {
-		Todo todo = new Todo(++todosCount,username,description,targetDate,done);
+	public Todo addTodo(String username, Todo todo) {
+		todo.setUsername(username);
+		todo.setId(++todosCount);
 		todos.add(todo);
 		return todo;
 	}
